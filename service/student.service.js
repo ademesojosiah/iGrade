@@ -11,9 +11,17 @@ const pool = new Pool({
 });
 
 const getStudents = async () => {
-  const users = await pool.query("SELECT * FROM student_scores");
+  const client = await pool.connect();
 
-  console.log(users.rows);
+  try {
+    const result = await client.query("SELECT * FROM student_scores");
+    return result.rows;
+  } catch (err) {
+    console.error('Error fetching students', err.stack);
+    throw err;
+  } finally {
+    client.release();
+  }
 };
 
 
@@ -28,6 +36,8 @@ const getStudentByMatricNumber = async (matric_number) => {
         WHERE matric_number = $1;
       `;
       const values = [matric_number.toUpperCase()];
+
+
       const result = await client.query(query, values);
   
       if (result.rows.length === 0) {
@@ -86,7 +96,12 @@ const getStudentByMatricNumber = async (matric_number) => {
       const values = [matric_number, first_name, middle_name, last_name, department];
       await client.query(insertQuery, values);
     } catch (err) {
-      console.error('Error executing query', err.stack);
+      if (err.code === '23505') {
+        console.error('Error: Matriculation number already registered.');
+        // You can display a message to the user indicating the conflict
+      } else {
+        console.error('Error executing query', err.stack);
+      }
     } finally {
       client.release();
     }
@@ -119,4 +134,4 @@ const updateWeekScore = async (matric_number, week_number, score) => {
 
 
 
-module.exports = {createStudent,getStudents,updateWeekScore,getStudentByMatricNumber};
+module.exports = {createStudent,getStudents,updateWeekScore,getStudentByMatricNumber,getStudents};

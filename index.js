@@ -4,8 +4,12 @@ const { isAuthorized } = require("./middleware/authentication");
 const userRouter = require("./router/user.router");
 const app = express();
 const session = require("express-session");
+const PORT = process.env.PORT
 
 app.use(express.json());
+
+app.use(express.static('public')); // Serve static files from the 'public' directory
+
 
 // Set up express-session middleware
 app.use(
@@ -20,7 +24,7 @@ app.use(
 app.use("/api", isAuthorized, userRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).json({ status: true, message: "hello" });
+  res.status(200).sendFile(__dirname + '/public/index.html'); // Serve index.html for the root route
 });
 
 app.post("/login", async (req, res) => {
@@ -47,7 +51,6 @@ app.post("/logout", (req, res) => {
       console.error("Error during logout", err);
       return res.status(500).send("Internal server error");
     }
-
     res.clearCookie("connect.sid"); // Clear the session cookie
     res.status(200).send("Logout successful");
   });
@@ -57,6 +60,6 @@ app.use("*", (req, res) => {
   res.status(404).send("page not found");
 });
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log("server listening to port 4000");
 });
