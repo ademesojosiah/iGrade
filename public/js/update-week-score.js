@@ -71,6 +71,7 @@ function displayStudentInfo(student) {
                 <p class="card-text">Week 1 Score: ${student.week1 || 'N/A'}</p>
                 <p class="card-text">Week 2 Score: ${student.week2 || 'N/A'}</p>
                 <p class="card-text">Week 3 Score: ${student.week3 || 'N/A'}</p>
+                <p class="card-text">Week 3 Score: ${student.week4 || 'N/A'}</p>
             </div>
         </div>
     `;
