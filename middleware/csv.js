@@ -4,14 +4,19 @@ const { createObjectCsvStringifier } = require('csv-writer');
 const generateCSVString = (students) => {
     const csvStringifier = createObjectCsvStringifier({
         header: [
-            { id: 'matric_number', title: 'Matric Number' },
-            { id: 'first_name', title: 'First Name' },
-            { id: 'middle_name', title: 'Middle Name' },
-            { id: 'last_name', title: 'Last Name' },
+            { id: 'S/N', title: 'S/N' },
+            { id: 'session', title: 'session' },
+            { id: 'semester', title: 'semester' },
+            { id: 'course', title: 'course' },
+            { id: 'course_unit', title: 'course unit' },
+            { id: 'matric_number', title: 'Reg No' },
+            { id: 'name', title: 'Name' },
+            { id: 'part', title: 'Part' },
             { id: 'department', title: 'Department' },
             { id: 'week1', title: 'Week 1' },
             { id: 'week2', title: 'Week 2' },
-            { id: 'week3', title: 'Week 3' }
+            { id: 'week3', title: 'Week 3' },
+            { id: 'week4', title: 'Week 4' }
         ]
     });
 

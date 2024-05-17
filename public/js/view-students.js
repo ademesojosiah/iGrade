@@ -45,6 +45,7 @@ async function fetchStudents(searchQuery = '') {
             <td>${student.week1 || ''}</td>
             <td>${student.week2 || ''}</td>
             <td>${student.week3 || ''}</td>
+            <td>${student.week4 || ''}</td>
             <td>
     <button class="btn btn-danger delete-btn" data-matric-number="${student.matric_number}">Delete</button>
 </td>

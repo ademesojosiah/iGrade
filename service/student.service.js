@@ -66,6 +66,8 @@ const getStudentByMatricNumber = async (matric_number) => {
     first_name = titleCase(first_name);
     middle_name = titleCase(middle_name);
     last_name = titleCase(last_name);
+
+    const name = first_name + middle_name + last_name;
   
     const client = await pool.connect();
   
@@ -74,26 +76,30 @@ const getStudentByMatricNumber = async (matric_number) => {
       const createTableQuery = `
         CREATE TABLE IF NOT EXISTS student_scores (
           id SERIAL PRIMARY KEY,
+          session varchar(20) DEFAULT '2022/2023',
+          semester varchar(20) DEFAULT 'Rain',
+          course varchar(20) DEFAULT 'CSC302',
+          course_unit INTEGER DEFAULT 3,
           matric_number VARCHAR(20) UNIQUE NOT NULL,
-          first_name VARCHAR(50) NOT NULL,
-          middle_name VARCHAR(50),
-          last_name VARCHAR(50) NOT NULL,
+          name VARCHAR(50) NOT NULL,
+          part INTEGER DEFAULT 3,
           department VARCHAR(50) NOT NULL,
           week1 INTEGER,
           week2 INTEGER,
           week3 INTEGER
+          week4 INTEGER
         );
       `;
       await client.query(createTableQuery);
   
       // Insert the student data
       const insertQuery = `
-        INSERT INTO student_scores (matric_number, first_name, middle_name, last_name, department)
-        VALUES ($1, $2, $3, $4, $5)
+        INSERT INTO student_scores (matric_number, name, department)
+        VALUES ($1, $2, $3,)
         ON CONFLICT (matric_number) 
         DO NOTHING;
       `;
-      const values = [matric_number, first_name, middle_name, last_name, department];
+      const values = [matric_number, name, department];
       return await client.query(insertQuery, values);
 
     
