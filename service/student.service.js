@@ -94,14 +94,11 @@ const getStudentByMatricNumber = async (matric_number) => {
         DO NOTHING;
       `;
       const values = [matric_number, first_name, middle_name, last_name, department];
-      await client.query(insertQuery, values);
+      return await client.query(insertQuery, values);
+
+    
     } catch (err) {
-      if (err.code === '23505') {
-        console.error('Error: Matriculation number already registered.');
-        // You can display a message to the user indicating the conflict
-      } else {
         console.error('Error executing query', err.stack);
-      }
     } finally {
       client.release();
     }

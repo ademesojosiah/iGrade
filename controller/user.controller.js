@@ -7,7 +7,10 @@ const createStudent = async (req, res) => {
     const student = req.body;
   
     try {
-      await userService.createStudent(student);
+      const result = await userService.createStudent(student);
+      if (result.rowCount === 0) {
+       return res.status(403).send('Matriculation number already registered.');
+      }
       res.status(201).send('Student data inserted successfully');
     } catch (err) {
       console.error('Error inserting student data', err);

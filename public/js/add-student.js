@@ -21,6 +21,8 @@ document.getElementById('add-student-form').addEventListener('submit', async (ev
         if (response.status === 401) {
             window.location.href = '/';
             alert('signup !!!');
+        }else if (response.status == 403) {
+            alert( 'Matriculation number already registered.');
         }else if (response.ok) {
             alert('Student added successfully!');
             document.getElementById('add-student-form').reset();

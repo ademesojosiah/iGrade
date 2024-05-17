@@ -1,34 +1,38 @@
-document.getElementById('update-week-score-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const updateData = {
-        matric_number: document.getElementById('matric-number').value,
-        week_number: document.getElementById('week-number').value,
-        score: document.getElementById('score').value,
-    };
-
-    try {
-        const response = await fetch('/api/update-week-score', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updateData),
-        });
-
-        if (response.status === 401) {
-            window.location.href = '/';
-        }else if (response.ok) {
-            alert('Week score updated successfully!');
-            document.getElementById('update-week-score-form').reset();
-        } else {
-            alert('Error updating week score.');
+  document.getElementById('update-week-score-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        const student = {
+            matric_number: document.getElementById('matric-number').value,
+            week_number: document.getElementById('week-number').value,
+            score: document.getElementById('score').value,
+        };
+    
+        try {
+            const response = await fetch('/api/update-week-score', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(student),
+            });
+    
+            if (response.status === 401) {
+                window.location.href = '/';
+                alert('signup !!!');
+            }else if (response.ok) {
+                alert('Week score updated successfully!');
+                document.getElementById('update-week-score-form').reset();
+                document.getElementById('student-info').innerHTML = '';
+            } else {
+                alert('Error updating score.');
+            }
+        } catch (err) {
+            console.error('Error updating score', err);
+            alert('Error updating score.');
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error updating week score.');
-    }
-});document.getElementById('fetch-student-info').addEventListener('click', async () => {
+    });
+
+    document.getElementById('fetch-student-info').addEventListener('click', async () => {
     const matricNumber = document.getElementById('matric-number').value;
 
     if (matricNumber.trim() === '') {
@@ -72,37 +76,4 @@ function displayStudentInfo(student) {
     `;
 }
 
-document.getElementById('update-week-score-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const student = {
-        matric_number: document.getElementById('matric-number').value,
-        week_number: document.getElementById('week-number').value,
-        score: document.getElementById('score').value,
-    };
-
-    try {
-        const response = await fetch('/api/update-week-score', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(student),
-        });
-
-        if (response.status === 401) {
-            window.location.href = '/';
-            alert('signup !!!');
-        }else if (response.ok) {
-            alert('Week score updated successfully!');
-            document.getElementById('update-week-score-form').reset();
-            document.getElementById('student-info').innerHTML = '';
-        } else {
-            alert('Error updating score.');
-        }
-    } catch (err) {
-        console.error('Error updating score', err);
-        alert('Error updating score.');
-    }
-});
 
