@@ -39,6 +39,7 @@ async function fetchStudents(searchQuery = '') {
         row.innerHTML = `
             <td>${student.matric_number}</td>
             <td>${student.Names}</td>
+            <td>${student.Department}</td>
             <td>${student.week1 || ''}</td>
             <td>${student.week2 || ''}</td>
             <td>${student.week3 || ''}</td>
