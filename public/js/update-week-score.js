@@ -65,7 +65,7 @@ function displayStudentInfo(student) {
     studentInfoDiv.innerHTML = `
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">${student.first_name} ${student.middle_name} ${student.last_name}</h5>
+                <h5 class="card-title">${student.name}</h5>
                 <p class="card-text">Matric Number: ${student.matric_number}</p>
                 <p class="card-text">Department: ${student.department}</p>
                 <p class="card-text">Week 1 Score: ${student.week1 || 'N/A'}</p>
