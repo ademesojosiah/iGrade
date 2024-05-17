@@ -129,6 +129,19 @@ const updateWeekScore = async (matric_number, week_number, score) => {
     }
   };
 
+  const deleteStudentByMatricNumber = async (matric_number) => {
+    const client = await pool.connect();
+    try {
+        const result = await client.query('DELETE FROM student_scores WHERE matric_number = $1', [matric_number.toUpperCase()]);
+        return result.rowCount > 0;
+    } catch (err) {
+        console.error('Error deleting student', err.stack);
+        throw err;
+    } finally {
+        client.release();
+    }
+};
 
 
-module.exports = {createStudent,getStudents,updateWeekScore,getStudentByMatricNumber,getStudents};
+
+module.exports = {createStudent,getStudents,updateWeekScore,getStudentByMatricNumber,getStudents,deleteStudentByMatricNumber};

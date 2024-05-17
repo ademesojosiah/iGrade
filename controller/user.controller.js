@@ -70,10 +70,27 @@ const getStudentByMatricNumber = async (req, res) => {
   }
   }
 
+
+  const deleteStudentByMatricNumber = async (req, res) => {
+    const matric_number = req.query.matric;
+    try {
+        const success = await userService.deleteStudentByMatricNumber(matric_number);
+        if (success) {
+            res.status(200).send('Student deleted successfully');
+        } else {
+            res.status(404).send('Student not found');
+        }
+    } catch (err) {
+        console.error('Error deleting student', err);
+        res.status(500).send('Internal server error');
+    }
+  }
+
 module.exports ={
     createStudent,
     updateWeekScore,
     getStudentByMatricNumber,
     getStudents,
-    downloadCsv
+    downloadCsv,
+    deleteStudentByMatricNumber
 }

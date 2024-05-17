@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+
+
 async function fetchStudents(searchQuery = '') {
     try{
     const response = await fetch('/api/students');
@@ -43,10 +45,42 @@ async function fetchStudents(searchQuery = '') {
             <td>${student.week1 || ''}</td>
             <td>${student.week2 || ''}</td>
             <td>${student.week3 || ''}</td>
+            <td>
+    <button class="btn btn-danger delete-btn" data-matric-number="${student.matric_number}">Delete</button>
+</td>
         `;
 
         tbody.appendChild(row);
     })
+
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            // Ask for confirmation before deleting
+            const confirmed = confirm('Are you sure you want to delete this student?');
+            
+            if (!confirmed) {
+                return; // Cancel the delete operation
+            }
+    
+            const matricNumber = event.target.getAttribute('data-matric-number');
+            try {
+                const response = await fetch(`/api/get-student?matric=${matricNumber}`, {
+                    method: 'DELETE',
+                });
+    
+                if (response.ok) {
+                    // Remove the deleted student's row from the table
+                    event.target.closest('tr').remove();
+                    alert('Student deleted successfully');
+                } else {
+                    alert('Error deleting student');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error deleting student');
+            }
+        });
+    });
     }catch(err){
         window.location.href = '/';
             alert('signup !!!');
