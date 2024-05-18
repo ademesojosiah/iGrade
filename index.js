@@ -4,12 +4,11 @@ const { isAuthorized } = require("./middleware/authentication");
 const userRouter = require("./router/user.router");
 const app = express();
 const session = require("express-session");
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 app.use(express.json());
 
-app.use(express.static('public')); // Serve static files from the 'public' directory
-
+app.use(express.static("public")); // Serve static files from the 'public' directory
 
 // Set up express-session middleware
 app.use(
@@ -17,14 +16,17 @@ app.use(
     secret: process.env.PASSWORD, // Replace with a secure random string
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }, // Set to true if using HTTPS
+    cookie: {
+      secure: false,
+      maxAge: 1800000,
+    }, // Set to true if using HTTPS
   })
 );
 
 app.use("/api", isAuthorized, userRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).sendFile(__dirname + '/public/index.html'); // Serve index.html for the root route
+  res.status(200).sendFile(__dirname + "/public/index.html"); // Serve index.html for the root route
 });
 
 app.post("/login", async (req, res) => {
