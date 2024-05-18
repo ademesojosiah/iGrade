@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">
-            <img src="pics/iGradeBlue.png" alt="iGrade Logo" style="height: 40px;">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/add-student.html">Add Student</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/view-students.html">View Students</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/update-week-score.html">Update Week Score</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/index.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-link nav-link" id="logout-link">Logout</button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-dark" id="download-btn">Download</button>
-                </li>
-            </ul>
-        </div>
+      <a class="navbar-brand" href="/">
+        <img src="pics/iGradeBlue.png" alt="iGrade Logo" style="height: 40px" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/add-student.html">Add Student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/view-students.html">View Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/update-week-score.html"
+              >Update Week Score</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-dark" id="download-btn">Download</button>
+          </li>
+        </ul>
+      </div>
     </nav>
 
-
-
     <div class="container">
-        <h1>Login</h1>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="token">Token</label>
-                <input type="password" class="form-control" id="token" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+      <h1>Login</h1>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="token">Token</label>
+          <input type="password" class="form-control" id="token" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -57,5 +65,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
     <script src="js/login-download.js"></script>
-</body>
+  </body>
 </html>
