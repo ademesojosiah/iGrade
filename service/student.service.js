@@ -14,7 +14,9 @@ const getStudents = async () => {
   const client = await pool.connect();
 
   try {
-    const result = await client.query("SELECT * FROM student_scores");
+    const result = await client.query(
+      "SELECT * FROM student_scores ORDER BY updated_at"
+    );
     return result.rows;
   } catch (err) {
     console.error("Error fetching students", err.stack);
@@ -124,7 +126,8 @@ const updateWeekScore = async (matric_number, week_number, score) => {
     // Update the week score
     const updateQuery = `
         UPDATE student_scores
-        SET week${week_number} = $1
+        SET week${week_number} = $1,
+            updated_at = NOW()
         WHERE matric_number = $2;
       `;
     const values = [score, matric_number.toUpperCase()];
