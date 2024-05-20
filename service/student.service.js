@@ -15,7 +15,7 @@ const getStudents = async () => {
 
   try {
     const result = await client.query(
-      "SELECT * FROM student_scores ORDER BY updated_at"
+      "SELECT * FROM student_scores ORDER BY id"
     );
     return result.rows;
   } catch (err) {
