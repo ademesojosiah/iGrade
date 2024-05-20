@@ -87,7 +87,7 @@ const createStudent = async (student) => {
           course_unit INTEGER DEFAULT 3,
           matric_number VARCHAR(20) UNIQUE NOT NULL,
           name VARCHAR(50) NOT NULL,
-          part INTEGER,
+          part VARCHAR(20),
           department VARCHAR(50) DEFAULT 'Computer Science and Engineering' NOT NULL,
           week1 INTEGER,
           week2 INTEGER,
