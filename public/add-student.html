@@ -1,70 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Student</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">
-            <img src="pics/iGradeBlue.png" alt="iGrade Logo" style="height: 40px;">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/add-student.html">Add Student</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/view-students.html">View Students</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/update-week-score.html">Update Week Score</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/index.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-link nav-link" id="logout-link">Logout</button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-dark" id="download-btn">Download</button>
-                </li>
-            </ul>
-        </div>
+      <a class="navbar-brand" href="/">
+        <img src="pics/iGradeBlue.png" alt="iGrade Logo" style="height: 40px" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/add-student.html">Add Student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/view-students.html">View Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/update-week-score.html"
+              >Update Week Score</a
+            >
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-link nav-link" id="logout-link">
+              Logout
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-dark" id="download-btn">Download</button>
+          </li>
+        </ul>
+      </div>
     </nav>
 
-
     <div class="container mt-4">
-        <h1 class="text-center">Add Student</h1>
-        <form id="add-student-form">
-            <div class="form-group">
-                <label for="matric-number">Matric Number</label>
-                <input type="text" class="form-control" id="matric-number" required>
-            </div>
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" class="form-control" id="first-name" required>
-            </div>
-            <div class="form-group">
-                <label for="middle-name">Middle Name</label>
-                <input type="text" class="form-control" id="middle-name">
-            </div>
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" class="form-control" id="last-name" required>
-            </div>
-            <div class="form-group">
-                <label for="department">Department</label>
-                <input type="text" class="form-control" id="department" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Add Student</button>
-        </form>
+      <h1 class="text-center">Add Student</h1>
+      <form id="add-student-form">
+        <div class="form-group">
+          <label for="matric-number">Matric Number</label>
+          <input type="text" class="form-control" id="matric-number" required />
+        </div>
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text" class="form-control" id="first-name" required />
+        </div>
+        <div class="form-group">
+          <label for="middle-name">Middle Name</label>
+          <input type="text" class="form-control" id="middle-name" />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" class="form-control" id="last-name" required />
+        </div>
+        <div class="form-group">
+          <label for="part">Part</label>
+          <select class="form-control" id="part" required>
+            <option value="">Select Part</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="PG1">PG1</option>
+            <option value="PG2">PG2</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Add Student
+        </button>
+      </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -72,5 +91,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/add-student.js"></script>
     <script src="js/login-download.js"></script>
-</body>
+  </body>
 </html>
