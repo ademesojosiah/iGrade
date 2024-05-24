@@ -63,7 +63,7 @@ const titleCase = (str) => {
 };
 
 const createStudent = async (student) => {
-  let { matric_number, first_name, middle_name, last_name, department, part } =
+  let { matric_number, first_name, middle_name, last_name, part } =
     student;
 
   // Convert to desired formats
@@ -88,7 +88,7 @@ const createStudent = async (student) => {
           matric_number VARCHAR(20) UNIQUE NOT NULL,
           name VARCHAR(50) NOT NULL,
           part VARCHAR(20),
-          department VARCHAR(50) DEFAULT 'Computer Science and Engineering' NOT NULL,
+          department VARCHAR(50) DEFAULT 'Computer Science and Engineering',
           week1 INTEGER,
           week2 INTEGER,
           week3 INTEGER,
@@ -105,12 +105,12 @@ const createStudent = async (student) => {
 
     // Insert the student data
     const insertQuery = `
-        INSERT INTO student_scores (id, matric_number, name, department, part)
-        VALUES ($1, $2, $3, $4, $5)
+        INSERT INTO student_scores (id, matric_number, name, part)
+        VALUES ($1, $2, $3, $4)
         ON CONFLICT (matric_number) 
         DO NOTHING;
       `;
-    const values = [nextId, matric_number, name, department, part];
+    const values = [nextId, matric_number, name, part];
     return await client.query(insertQuery, values);
   } catch (err) {
     console.error("Error executing query", err.stack);
